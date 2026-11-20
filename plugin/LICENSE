@@ -1,0 +1,13 @@
+# MemGate 分层许可声明 (2026-11-20)
+
+本软件为分层许可作品, 各层按各自条款授权; 使用前请逐层阅读:
+
+| 层 | 目录 | 许可 | 文本 |
+|---|---|---|---|
+| 插件工具层 (TS 面/桥接/部署脚本) | index.ts, src/*.ts, src/bridge_cli.py, deploy/ | Apache-2.0 | 标准 Apache-2.0 条款 |
+| 记忆引擎 SDK | src/vendor/calldecay-sdk/ | Apache-2.0 | 见该目录声明 |
+| CallDecay 内核层 | src/kernel/core/, src/vendor/core/ | AI Research Source License v1.2 (专利保留) | src/vendor/core/LICENSE |
+| 治理件 | src/vendor/pvs-sdk/ | 见其目录声明 | src/vendor/pvs-sdk/ |
+
+要点提示: 内核层非商用(研究/教学/验证/评估)免费, 含 90 日非生产评估条款; 商用授权另行约定。
+第三方权利提示: 本软件不含第三方思想映射派生代码 (发布物排除清单执行结果)。

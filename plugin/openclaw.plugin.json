@@ -1,0 +1,29 @@
+{
+  "id": "memgate",
+  "name": "MemGate",
+  "description": "Three-layer memory (hot/warm/cold) + governance gate tools, bridged to the Python single-source (CallDecay LandingStore + pvs.gate + accept_contract). Delegating compaction mode: official engine is the safety net.",
+  "version": "2026.11.19",
+  "kind": ["memory", "context-engine"],
+  "categories": ["memory", "context", "tools"],
+  "contracts": {
+    "tools": [
+      "governance_preflight",
+      "governance_ledger",
+      "governance_deposit",
+      "governance_recall"
+    ]
+  },
+  "activation": { "onStartup": true },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "pythonBin": { "type": "string", "default": "python3" },
+      "workspaceRoot": { "type": "string" },
+      "landingPath": { "type": "string" },
+      "bridgePath": { "type": "string" },
+      "hotWindowMessages": { "type": "integer", "default": 12, "minimum": 1 },
+      "coldStartTokenBudget": { "type": "integer", "default": 20000, "minimum": 2000 }
+    }
+  }
+}

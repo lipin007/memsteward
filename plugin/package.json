@@ -1,0 +1,39 @@
+{
+  "name": "memgate",
+  "version": "2026.11.19",
+  "description": "OpenClaw governance middleware: three-layer memory (hot/warm/cold) + gate tools, bridged to the Python single-source (CallDecay LandingStore / pvs.gate / accept_contract).",
+  "type": "module",
+  "license": "SEE LICENSE IN LICENSE",
+  "files": [
+    "index.ts",
+    "openclaw.plugin.json",
+    "src/",
+    "VERSIONS.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "typebox": "1.3.18"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.9.4"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "compat": {
+      "pluginApi": ">=2026.9.4",
+      "minGatewayVersion": "2026.9.4"
+    },
+    "build": {
+      "openclawVersion": "2026.9.4",
+      "pluginSdkVersion": "2026.9.4"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lipin007/memsteward.git"
+  },
+  "homepage": "https://github.com/lipin007/memsteward"
+}

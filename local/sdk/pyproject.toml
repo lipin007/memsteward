@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "memsteward"
+version = "0.1.0"
+description = "LLM memory middleware with quality control, decay, and semantic recall"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+keywords = ["llm", "memory", "middleware", "rag", "semantic-search"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.optional-dependencies]
+semantic = ["numpy"]
+langchain = ["langchain-core>=0.1.0"]
+
+[tool.setuptools.packages.find]
+where = ["."]

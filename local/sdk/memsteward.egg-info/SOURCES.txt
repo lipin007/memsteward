@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+memsteward/__init__.py
+memsteward/core.py
+memsteward/version.py
+memsteward.egg-info/PKG-INFO
+memsteward.egg-info/SOURCES.txt
+memsteward.egg-info/dependency_links.txt
+memsteward.egg-info/requires.txt
+memsteward.egg-info/top_level.txt

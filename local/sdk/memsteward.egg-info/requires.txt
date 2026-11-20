@@ -1,0 +1,6 @@
+
+[langchain]
+langchain-core>=0.1.0
+
+[semantic]
+numpy

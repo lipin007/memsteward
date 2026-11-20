@@ -1,0 +1,17 @@
+{
+  "product": "MemGate",
+  "component": "memgate",
+  "version": "2026.11.19",
+  "sdk": "0.1.0",
+  "bridgeProtocol": 3,
+  "levers": {
+    "decayFactor": 0.9,
+    "minLiveness": 0.03
+  },
+  "embedding": {},
+  "configBinding": {
+    "memorySlot": "memgate",
+    "contextEngineSlot": "memgate"
+  },
+  "assembledAt": "2026-11-19T18:48:41+0800"
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh"><head><meta charset="utf-8"><meta http-equiv="refresh" content="30">
+<title>MemGate 健康观测台</title>
+<style>
+body{background:#0f172a;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:20px}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.title{font-size:28px;font-weight:700}
+.overall{font-size:48px;font-weight:800;color:#eab308}
+.overall-label{font-size:14px;color:#64748b;text-align:center}
+.meta{color:#64748b;font-size:13px;margin-bottom:16px}
+table{width:100%;border-collapse:collapse;background:#1e293b;border-radius:12px;overflow:hidden}
+thead{background:#334155}
+thead th{padding:12px 14px;text-align:left;font-size:13px;color:#94a3b8;font-weight:600}
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;margin-right:8px}
+.b-green{background:#052e16;color:#22c55e}
+.b-yellow{background:#422006;color:#eab308}
+.b-red{background:#450a0a;color:#ef4444}
+.summary-bar{display:flex;gap:16px;margin-bottom:20px}
+</style></head><body>
+<div class="header">
+  <div><div class="title">🛡️ MemGate 健康观测台</div>
+  <div class="meta">快照时间 2026-11-16 17:16:44 · 30s 自动刷新</div></div>
+  <div style="text-align:center"><div class="overall">2 WARN</div>
+  <div class="overall-label">6/8 GREEN</div></div>
+</div>
+<div class="summary-bar">
+  <span class="badge b-green">● 6 正常</span>
+  <span class="badge b-yellow">◐ 2 告警</span>
+  <span class="badge b-red">○ 0 故障</span>
+</div>
+<table><thead><tr><th>组件</th><th>状态详情</th><th>指标</th></tr></thead>
+<tbody>
+<tr style="border-bottom:1px solid #1e293b">
+  <td style="padding:10px 14px;white-space:nowrap"><span style="color:#22c55e;font-size:18px">●</span> memt-daemon (决策观测面)</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-family:monospace">health 11ms</td>
+  <td style="padding:10px 14px;color:#22c55e;font-weight:600;text-align:right">响应 11ms</td>
+</tr>
+<tr style="border-bottom:1px solid #1e293b">
+  <td style="padding:10px 14px;white-space:nowrap"><span style="color:#22c55e;font-size:18px">●</span> carry_lock (S2/S3 锁定)</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-family:monospace">mode=on</td>
+  <td style="padding:10px 14px;color:#22c55e;font-weight:600;text-align:right">锁定生效</td>
+</tr>
+<tr style="border-bottom:1px solid #1e293b">
+  <td style="padding:10px 14px;white-space:nowrap"><span style="color:#22c55e;font-size:18px">●</span> llama-embed-8085 (nomic)</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-family:monospace">health 5ms</td>
+  <td style="padding:10px 14px;color:#22c55e;font-weight:600;text-align:right">5ms</td>
+</tr>
+<tr style="border-bottom:1px solid #1e293b">
+  <td style="padding:10px 14px;white-space:nowrap"><span style="color:#eab308;font-size:18px">◐</span> 影子续写 (thinking_stub)</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-family:monospace">96 行 · 最后写 12:32:32 (284min 前)</td>
+  <td style="padding:10px 14px;color:#eab308;font-weight:600;text-align:right">96 entries</td>
+</tr>
+<tr style="border-bottom:1px solid #1e293b">
+  <td style="padding:10px 14px;white-space:nowrap"><span style="color:#22c55e;font-size:18px">●</span> P4② 只藏不删 (toolface)</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-family:monospace">__toolfaceFace × 2</td>
+  <td style="padding:10px 14px;color:#22c55e;font-weight:600;text-align:right">补丁激活</td>
+</tr>
+<tr style="border-bottom:1px solid #1e293b">
+  <td style="padding:10px 14px;white-space:nowrap"><span style="color:#22c55e;font-size:18px">●</span> OpenClaw 网关</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-family:monospace">OpenClaw 2026.11.3 (847611d)</td>
+  <td style="padding:10px 14px;color:#22c55e;font-weight:600;text-align:right">active</td>
+</tr>
+<tr style="border-bottom:1px solid #1e293b">
+  <td style="padding:10px 14px;white-space:nowrap"><span style="color:#eab308;font-size:18px">◐</span> memory FTS 索引</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-family:monospace">0 个索引文件</td>
+  <td style="padding:10px 14px;color:#eab308;font-weight:600;text-align:right">FTS 可用</td>
+</tr>
+<tr style="border-bottom:1px solid #1e293b">
+  <td style="padding:10px 14px;white-space:nowrap"><span style="color:#22c55e;font-size:18px">●</span> depscan (每日 09:30)</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-family:monospace">job 9d7f250a · cron 30 9 * * *</td>
+  <td style="padding:10px 14px;color:#22c55e;font-weight:600;text-align:right">scheduled</td>
+</tr></tbody></table>
+<div style="margin-top:20px;color:#475569;font-size:12px">
+MemGate 健康观测台 · v1.0 · 只读零写盘 · 信号源: memt-daemon(8877) / carry_lock / llama-embed(8085) / shadow / toolface / gateway / FTS / cron
+</div></body></html>

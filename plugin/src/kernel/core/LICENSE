@@ -1,0 +1,228 @@
+# 适用范围声明（2026-10-13 修订）
+
+本目录（CallDecay/core，**内核层**）的全部文件，依据下述 **AI Research Source
+License — Version 1.3 (2026-11-20)** 授权，构成该协议所称 "Code"。要点：
+非商用（研究/教学/验证/评估）免费，**90 日非生产评估明示**（§2.4，含评估期
+专利不起诉承诺）；**托管/管理服务明文禁止**（§2.3，无论是否收费）；
+**商用需事先书面授权**（§2.2）；**专利一律保留，本协议不授予任何专利许可**（§4）；
+对许可方提起专利主张 = 全部许可即刻永久终止（§4.5）。
+
+**父目录 `../LICENSE`（Apache-2.0）不适用于本目录。** 工具层（core/ 之外）
+与内核层（core/）为分层许可，详见 `../PATENTS.md`、`../NOTICE`、`../CLA.md`。
+本目录不含 Papers 资产，协议第 3 节（Papers）对本目录不适用。
+若本目录以独立包分发而未随附仓库根 LICENSE，以下文本即完整条款。
+
+联系：lipin5555@outlook.com
+
+---
+
+# AI Research Source License — Version 1.3 (2026-11-20)
+
+Copyright (c) 2026 Li Pin. All rights reserved.
+
+This repository contains two distinct asset classes — **Code** and **Papers** —
+governed by the terms below, followed by a common **Patent Reservation**
+clause that applies to both.
+
+---
+
+## 1. Definitions
+
+- **"Code"** means the software in this repository, including but not
+  limited to `minimal/minimal_caf.py` and its accompanying scripts,
+  documentation files in source form, and any modifications thereof.
+- **"Papers"** means the scientific manuscripts in `papers/` (PDF and any
+  HTML or source forms), including their abstracts, figures, tables, and
+  Data Availability statements.
+- **"Commercial Use"** means any use intended for or directed toward
+  commercial advantage or monetary compensation, including but not limited
+  to: integrating the Code or Papers into a commercial product or service;
+  selling, licensing, or distributing copies for a fee; or employing the
+  Code or Papers in the production of goods or services offered for sale.
+  Commercial Use **excludes** academic research, teaching, scholarly
+  publication, verification/reproduction of reported results, and
+  non-profit evaluation.
+- **"Hosted or Managed Service"** means providing the Code (original or
+  modified, in whole or in part) to third parties as a service, where the
+  service provides those third parties with access to any substantial set
+  of the features or functionality of the Code, whether or not for a fee.
+- **"Evaluation"** means use of the Code solely to assess its
+  functionality and performance, in non-production systems, for a
+  continuous period of no more than ninety (90) days, by or on behalf of
+  a single legal entity, without integration into any product or service
+  offered to third parties.
+- **"Licensor"** means Li Pin.
+- **"You"** means any person or entity exercising the permissions granted
+  below.
+
+## 2. Code License (source-available; Commercial Use requires consent)
+
+### 2.1 Grant for non-commercial use
+
+Subject to the terms of this License, the Licensor grants You a worldwide,
+royalty-free, non-exclusive, perpetual license to use, copy, modify,
+merge, and distribute the Code, and to run the Code, **for non-commercial
+purposes only** (research, teaching, personal study, verification, and
+evaluation), provided that:
+
+1. The above copyright notice and this permission notice are included in
+   all copies or substantial portions of the Code.
+2. Modified versions are clearly marked as such.
+
+### 2.2 Commercial Use requires prior written consent
+
+**Commercial Use of the Code — in whole or in part, original or modified —
+requires the prior written consent of the Licensor.** Without such
+consent, You may not: integrate the Code into a commercial product or
+service; sell or sublicense the Code or any work derived from it; or use
+the Code in the operation of a commercial offering.
+
+Requests for commercial consent may be directed to: lipin5555@outlook.com.
+The Licensor may grant, condition, or withhold consent at the Licensor's
+sole discretion.
+
+### 2.3 Hosted or Managed Service
+
+**Non-commercial Hosted or Managed Service is permitted** — for example
+running the Code on a shared server for a team, classroom, research
+group, or non-profit community — provided the service is not offered for
+a fee and is not directed toward commercial advantage.
+**Providing the Code to third parties as a commercial Hosted or Managed
+Service requires the prior written consent of the Licensor**, whether the
+Code is original or modified. (Wording adapted from
+Elastic License 2.0, elastic.co, used as a drafting reference.)
+
+### 2.4 Evaluation (90-day, non-production)
+
+Notwithstanding Sections 2.1 through 2.3, any entity may use the Code for
+an **Evaluation** without prior written consent. During the Evaluation
+period, the Licensor covenants not to assert any patent claim of the
+Licensor against Your exercise of the Section 2.1 license during that
+Evaluation. Conversion of an Evaluation to production use or Commercial
+Use requires the prior written consent of the Licensor under Section 2.2.
+
+## 3. Papers License (Attribution + Integrity; Commercial Use requires consent)
+
+Subject to the terms of this License, the Licensor grants You a worldwide,
+royalty-free, non-exclusive, perpetual license to:
+
+1. **Reproduce and distribute** the Papers for non-commercial purposes —
+   scholarly sharing, teaching, and preprint circulation — provided You
+   give appropriate credit to the Licensor (author name "Li Pin", the
+   paper title, the ORCID iD 0009-0004-9509-9644, and a link to this
+   repository or the preprint DOI).
+2. **Translate, adapt, and create derivatives** of the Papers for
+   scholarly, educational, or journalistic purposes, provided that any
+   derivative clearly indicates it is a modification, that the original
+   author attribution is preserved, and that no reported measurement,
+   effect size, or verdict is altered or misrepresented.
+3. **Quote and excerpt** the Papers under fair-use / fair-dealing rules.
+
+**Commercial Use of the Papers (including republication for profit or
+incorporation into a commercial product) requires the prior written
+consent of the Licensor**, except that inclusion in indexing services,
+citation databases, and academic aggregators is always permitted.
+
+## 4. Patent Reservation (applies to Code AND Papers)
+
+1. **Nothing in this License grants You any license or right under any
+   patent** owned or controlled by the Licensor. All patent rights are
+   expressly reserved.
+2. The Licensor has filed patent applications (filing date 2026-09-05)
+   covering the mechanisms described in the Papers and implemented in the
+   Code, and such other subject matter as the claims may cover. The three
+   operations (injection, decay, freezing) specified in the Papers and
+   implemented in the Code are sufficient to verify every result reported
+   there.
+3. **Any Commercial Use that would fall within the scope of a claim of the
+   Licensor's patents requires a separate patent license from the
+   Licensor**, regardless of the terms of Sections 2 and 3. This License
+   grants no implied patent license of any kind.
+4. This reservation survives termination of any other provision of this
+   License.
+5. **Patent aggression terminates all licenses.** If You or Your company
+   make any written claim that the Code, the Papers, or the mechanism
+   disclosed therein infringes or contributes to infringement of any
+   patent, all licenses granted to You under this License terminate
+   immediately and permanently. (Adapted from Elastic License 2.0.)
+
+## 5. Clarification: scope of this License
+
+For the avoidance of doubt:
+
+1. **Scientific facts, ideas, formulas, mathematical relations, and laws**
+   presented in the Papers or embodied in the Code are not subject to
+   copyright and are **not restricted by this License**. This License
+   restricts only the *expression* of the Code and Papers (copying,
+   distributing, and modifying those specific files and texts).
+2. This License therefore does not restrict Your right to **independently
+   implement** the disclosed ideas (including the three operations) in
+   your own code, written without copying from this repository.
+3. However, an independent implementation does not avoid the patents
+   referred to in Section 4: if Your use — commercial or otherwise — falls
+   within the scope of a claim of the Licensor's patents, You need a
+   patent license from the Licensor. **In particular, Commercial Use of
+   the disclosed mechanism is subject to the Licensor's patent rights.**
+4. Verification and reproduction of reported results, and citation,
+   quotation, indexing, and academic aggregation, are always permitted
+   and require no consent.
+5. **No trademark license.** The names "MemSteward", "MemGate", and any
+   related names, logos, or marks of the Licensor are not licensed under
+   this License. No right to use these marks is granted; any use requires
+   the prior written consent of the Licensor.
+
+## 6. Disclaimer
+
+The Code and Papers are provided "as is", without warranty of any kind,
+express or implied, including but not limited to warranties of
+merchantability, fitness for a particular purpose, or non-infringement.
+In no event shall the Licensor be liable for any claim, damages, or other
+liability arising from, out of, or in connection with the Code or Papers.
+
+## 7. Termination
+
+Any breach of Sections 2, 3, or 4 terminates Your rights under this
+License automatically. If the Licensor provides You with notice of Your
+violation, and You cease all violation of this License no later than
+thirty (30) days after You receive that notice, Your licenses will be
+reinstated retroactively; however, any violation after such reinstatement
+terminates all licenses automatically and permanently. The cure right of
+this Section does not apply to termination under Section 4.5, which is
+immediate and permanent. Sections 1, 4, 5, 6, and 7 survive any
+termination. (30-day cure wording adapted from Elastic License 2.0.)
+
+---
+
+*This is a source-available license tailored to a research publication:
+non-commercial use (research, teaching, verification, 90-day
+non-production evaluation) is free; non-commercial team/teaching hosting is permitted while
+commercial hosted or managed service is prohibited; Commercial Use of
+the code, the papers, or the patented mechanism requires the author's
+written consent. For questions contact: lipin5555@outlook.com*
+
+---
+
+**Plain-language summary**
+
+- **Code** (`minimal/`): free for research, teaching, verification, and
+  90-day non-production evaluation. Using it in a commercial product or
+  service requires the author's written consent.
+- **Hosted/Managed Service**: non-commercial team/teaching hosting is
+  permitted; offering this software to third parties as a commercial
+  service requires written consent.
+- **Papers** (`papers/`): free to share, translate, quote, and build upon
+  for scholarship. Commercial republication requires consent.
+- **Patents**: nothing here grants a patent license (except the evaluation
+  covenant in §2.4). Commercial use of the disclosed mechanism falls under
+  the author's patent rights (filed 2026-09-05). If you sue the author
+  alleging patent infringement, all your licenses end immediately.
+- **The science is free to read and to verify**; the *commercial* use of
+  the mechanism is what requires authorization.
+
+*Version history: 1.1 (2026-09-06) → 1.2 (2026-10-13): added §2.3
+hosted/managed-service prohibition, §2.4 evaluation covenant, §4.5
+patent-aggression termination, §7 30-day cure (§2.3/§4.5/§7 wording
+adapted from Elastic License 2.0). Core prohibitions unchanged.
+*1.2 → 1.3 (2026-11-20): §2.3 allows non-commercial hosted/managed
+service (commercial service still requires written consent); added §5.5
+no-trademark-license. Core prohibitions unchanged.*

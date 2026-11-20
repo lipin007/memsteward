@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "endpoint": "http://127.0.0.1:8877",
+  "sessions": [
+    "agent:main:"
+  ],
+  "timeoutMs": 2500,
+  "bridgeRemote": true,
+  "toolfaceHook": false
+}
