@@ -2,7 +2,7 @@
   "id": "memgate",
   "name": "MemGate",
   "description": "Three-layer memory (hot/warm/cold) + governance gate tools, bridged to the Python single-source (CallDecay LandingStore + pvs.gate + accept_contract). Delegating compaction mode: official engine is the safety net.",
-  "version": "2026.11.19",
+  "version": "0.1.2",
   "kind": [
     "memory",
     "context-engine"
