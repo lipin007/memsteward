@@ -1,11 +1,12 @@
 {
   "name": "memgate",
-  "version": "2026.11.19",
+  "version": "0.1.1",
   "description": "OpenClaw governance middleware: three-layer memory (hot/warm/cold) + gate tools, bridged to the Python single-source (CallDecay LandingStore / pvs.gate / accept_contract).",
   "type": "module",
   "license": "SEE LICENSE IN LICENSE",
   "files": [
     "index.ts",
+    "dist/",
     "openclaw.plugin.json",
     "src/",
     "VERSIONS.json",
