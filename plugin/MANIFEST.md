@@ -1,34 +1,34 @@
-# MANIFEST — A-插件版 物料清单（2026-11-19 组合审查修正: 依实 import 面改写）
+# MANIFEST — Plugin Edition (A) parts list (revised 2026-11-19 after composition review: rewritten to the actual import surface)
 
-> 版本: v2026.11.19（CalVer）
+> Version: v2026.11.19 (CalVer)
 
-## 组合清单（实 import 证据: bridge_cli/admission/m3 件）
+## Composition list (actual import evidence: bridge_cli / admission / m3 chain)
 
-| # | 件 | 用途 |
+| # | Part | Purpose |
 |---|---|---|
-| 1 | tokenizer | 中英分词 |
-| 2 | quality_gate | 质量门 |
-| 3 | knowledge_distiller | 蒸馏 |
-| 4 | hebbian_link | 共现/查询扩展 |
-| 5 | tiered_decay | compact 衰减 |
-| 7/8 | landing_store/summarizer | 落盘/摘要（calldecacy 包内） |
-| 9 | memgate | 打包链（pack.sh/plugin.json） |
-| 10 | mechanism_learn | 机制学习（m3 链消费） |
-| 12 | m3 | 采集器+判读（A 树平铺影子） |
-| 20 | calldecacy-sdk | 记忆引擎整包 |
-| 21 | admission | 写入准入 |
-| 22 | semantic_recall | 语义臂 hybrid_recall |
+| 1 | tokenizer | Chinese/English tokenization |
+| 2 | quality_gate | quality gate |
+| 3 | knowledge_distiller | distillation |
+| 4 | hebbian_link | co-occurrence / query expansion |
+| 5 | tiered_decay | compact decay |
+| 7/8 | landing_store/summarizer | persistence / summarization (inside the calldecacy package) |
+| 9 | memgate | packaging chain (pack.sh/plugin.json) |
+| 10 | mechanism_learn | mechanism learning (m3 chain consumer) |
+| 12 | m3 | collector + verdict (A-tree flattened shadow) |
+| 20 | calldecacy-sdk | memory engine package |
+| 21 | admission | write admission |
+| 22 | semantic_recall | semantic arm hybrid_recall |
 
-> 组合审查修正：移除 #6 memory_core（A 实不 import，原报虚）；补 #2/#10/#21/#22（原漏报）。
+> Composition review corrections: removed #6 memory_core (A does not import it; originally over-reported); added #2/#10/#21/#22 (originally under-reported).
 
-## 产品本体
+## Product body
 
-bridge_cli.py（与 B 同文）/ MemGate 测试床（test/ 83 判据）
+bridge_cli.py (same text as B) / MemGate test bed (test/ 83 criteria)
 
-## 安装形态
+## Install forms
 
-npm/tgz 插件；`_bootstrap` 随包 vendor 优先；家 `MEMSTEWARD_HOME`
+npm/tgz plugin; _bootstrap prefers the shipped vendor; home MEMSTEWARD_HOME
 
-## 变更流
+## Change workflow
 
-改组件→正源→sync_kernel→八门→本件→COMPONENTS.md 记一行
+change a part -> upstream source -> sync_kernel -> eight gates -> this artifact -> one line in COMPONENTS.md

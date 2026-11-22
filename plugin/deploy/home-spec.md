@@ -1,57 +1,56 @@
-# MemSteward 家目录规范 v1（~/.memsteward/）
+# MemSteward home directory spec v1 (~/.memsteward/)
 
-> 理念（2026-11-11 用户拍板）：用户安装后**一切收在一个独立家目录**，像 `~/.openclaw` 一样
-> 规范/标准/可生长——**这个家就是平台**，未来生态（模块包/记忆包/第三方扩展）在此繁衍。
-> 铁则：家在 /home 分区独立门户；禁根分区辖地（/、/tmp、/var、/opt）写任何默认。
+> Philosophy (decided 2026-11-11): after install, **everything lives in one dedicated home directory**, like `~/.openclaw` — a spec/standard that can grow: **this home is the platform**, where the future ecosystem (module packs / memory packs / third-party extensions) will thrive.
+> Iron rule: the home lives on the /home partition as its own door; no defaults write to the root partition (/, /tmp, /var, /opt).
 
-## 1. 标准布局（一次安装立全，缺省即病）
+## 1. Standard layout (set up once at install; anything missing = sick)
 
 ```
 ~/.memsteward/
-├── README.md          ← 本规范（安装器落位；家的说明书）
-├── 家/                 ← T0 记忆资产：landing.json · archive/ · lock ——**记忆本体，永不删**
-├── state/              ← 运行态：activity.json · summarize-buffer.json · m3_pilot_*
-├── shadow/             ← 观测面：serve.log · telemetry.jsonl · 仪表盘数据
-├── config/             ← 配置：daemon_forward.json（gate/端口/名单）· 未来配置件
-├── modules/            ← 🌱 **生态位（能力模块包）**：本地加速包 · 企业治理包 · 第三方模块
-├── packs/              ← 🌱 **生态位（内容包）**：记忆资产包 · 规则集 · 课程/模板
-└── tmp/                ← 临时区（TMPDIR 指这——禁 /tmp）
+├── README.md          <- this spec (placed by the installer; the home manual)
+├── 家/ (home)         <- T0 memory assets: landing.json · archive/ · lock — **the memory body, never deleted**
+├── state/             <- runtime state: activity.json · summarize-buffer.json · m3_pilot_*
+├── shadow/            <- observation surface: serve.log · telemetry.jsonl · dashboard data
+├── config/            <- configuration: daemon_forward.json (gate/ports/allowlists) · future config files
+├── modules/           <- ecosystem slots (capability module packs): local acceleration · enterprise governance · third-party modules
+├── packs/             <- ecosystem slots (content packs): memory asset packs · rule sets · courses/templates
+└── tmp/               <- scratch (TMPDIR points here — /tmp forbidden)
 ```
 
-## 2. 分区律
+## 2. Partition law
 
-| 区 | 归属 | 生命周期 | 谁能写 |
+| Zone | Owns | Lifecycle | Who writes |
 |---|---|---|---|
-| `家/` | 记忆资产（T0 账本＋归档） | **永不删**（卸载保留——记忆属主人） | 仅守护（serve.py） |
-| `state/` | 运行态 | 可重建（但默认保留） | 守护＋桥 |
-| `shadow/` | 观测 | 可轮转/清理 | 守护＋探针 |
-| `config/` | 配置 | 用户可编辑（改前备份） | 用户＋安装器 |
-| `modules/` | **能力模块包** | 装/卸独立（见 §3 模块契约） | 安装器＋模块自带装法 |
-| `packs/` | **内容包** | 装/卸独立 | 同上 |
-| `tmp/` | 临时 | 可随时清 | 任何人 |
+| `家/` (home) | memory assets (T0 ledger + archive) | **never deleted** (kept on uninstall — memory belongs to its owner) | daemon (serve.py) only |
+| `state/` | runtime state | rebuildable (kept by default) | daemon + bridge |
+| `shadow/` | observation | rotatable/cleanable | daemon + probes |
+| `config/` | configuration | user-editable (back up before editing) | user + installer |
+| `modules/` | **capability module packs** | install/uninstall independently (see §3 module contract) | installer + the module own install steps |
+| `packs/` | **content packs** | install/uninstall independently | same |
+| `tmp/` | scratch | clear anytime | anyone |
 
-## 3. 生态契约（模块包 v1）
+## 3. Ecosystem contract (module packs v1)
 
-一个模块包＝`modules/<名字>/` 一个目录，最少三件：
+A module pack = one directory `modules/<name>/`, minimum three files:
 
 ```
-modules/本地加速包/
-├── MODULE.md        ← 模块说明（是什么/依赖/装法/回退）
-├── manifest.json    ← {"name": "…", "version": "…", "requires": ["kv-llama@…"], "entry": "…"}
-└── (模块自带的客户端/配置/脚本)
+modules/local-acceleration-pack/
+├── MODULE.md        <- module description (what it is / dependencies / install / rollback)
+├── manifest.json    <- {"name": "…", "version": "…", "requires": ["kv-llama@…"], "entry": "…"}
+└── (the module own clients/configs/scripts)
 ```
 
-- **核心不依赖模块**（装不上/卸掉，记忆核心照常跑）——生态是增值不是地基
-- 模块间不互写对方目录；共用资源走 `state/` 或显式声明 `manifest.json` 的 `shared`
-- 内容包（`packs/`）同构（manifest 标 `type: "content"`）
+- **the core does not depend on modules** (if a module fails to install or is removed, the memory core keeps running) — the ecosystem is added value, not the foundation
+- modules never write into each other directories; shared resources go through `state/` or are declared in `manifest.json` under `shared`
+- content packs (`packs/`) are isomorphic (manifest marks `type: "content"`)
 
-## 4. 版本与迁移
+## 4. Versions and migration
 
-- 本规范随包发布（安装器落 `README.md`）；布局变更＝**迁移脚本**（不静默改家）
-- 账本格式升级＝`家/archive/` 留旧版＋迁移记录（写史不删——11-08 拍板延续）
+- this spec ships with the package (the installer places `README.md`); layout changes = **migration scripts** (never silently rewrite the home)
+- ledger format upgrades = keep the old version in `家/archive/` + a migration record (write history, do not delete it — continuing the 11-08 decision)
 
-## 5. 生态远景（v2+ 预留）
+## 5. Ecosystem horizon (reserved for v2+)
 
-- 模块市场（第三方模块包的发现/安装/签名）——对接 ClawHub 生态
-- 记忆包市场（可携带的记忆资产——「换框架记忆照旧」护城河的载体）
-- 家目录即身份（导出 `~/.memsteward` ＝带走全部记忆与能力——多机迁移/备份一句话）
+- module marketplace (discovery / install / signing for third-party module packs) — plug into the ClawHub ecosystem
+- memory pack marketplace (portable memory assets — the carrier of the "switch frameworks, keep your memories" moat)
+- home directory as identity (export `~/.memsteward` = take all your memories and capabilities with you — one-line migration/backup across machines)

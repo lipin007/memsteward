@@ -1,31 +1,31 @@
-# 宿主接入配置片段（MCP stdio）
+# Host connection config snippets (MCP stdio)
 
-通用形状（Claude Desktop / Cursor / Cline / Windsurf / Zed 均适用，各家配置文件位置不同）：
+Common shape (works for Claude Desktop / Cursor / Cline / Windsurf / Zed; each host keeps its config in a different place):
 
     {
       "mcpServers": {
         "memgate": {
           "command": "python3",
-          "args": ["/绝对路径/memgate-mcp/mcp_server.py"],
-          "env": { "MEMGATE_HOME": "/绝对路径/记忆库目录" }
+          "args": ["/absolute/path/memgate-mcp/mcp_server.py"],
+          "env": { "MEMGATE_HOME": "/absolute/path/to/memory-store" }
         }
       }
     }
 
-npm 安装后也可用随包启动器（免手填路径）：
+After an npm install the shipped launcher works too (no hand-typed paths):
 
     {
       "mcpServers": {
         "memgate": {
           "command": "memgate-mcp",
-          "env": { "MEMGATE_HOME": "/绝对路径/记忆库目录" }
+          "env": { "MEMGATE_HOME": "/absolute/path/to/memory-store" }
         }
       }
     }
 
-- Claude Desktop: claude_desktop_config.json（Help → Developer → Edit Config）
-- Cursor: .cursor/mcp.json（项目级）或全局 MCP 设置
-- Cline / Windsurf: 扩展设置里的 MCP Servers 面板
-- 换机器/换宿主零改动：stdio 协议，只要 python3 >= 3.9（npm 启动器另需 node >= 16）
+- Claude Desktop: claude_desktop_config.json (Help -> Developer -> Edit Config)
+- Cursor: .cursor/mcp.json (project level) or the global MCP settings
+- Cline / Windsurf: the MCP Servers panel in extension settings
+- moving machines or hosts changes nothing: stdio protocol, only python3 >= 3.9 required (the npm launcher additionally needs node >= 16)
 
-工具面：memgate_deposit（存）/ memgate_recall（取）/ memgate_stats（账）/ memgate_compact（压实）。
+Tool surface: memgate_deposit (store) / memgate_recall (fetch) / memgate_stats (ledger) / memgate_compact (compact).

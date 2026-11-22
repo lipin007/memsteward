@@ -1,9 +1,9 @@
 # knowledge_distiller
 
-## 功能
+## What it does
 
-(待填写)
+(to be filled)
 
-## 文件
+## Files
 
 knowledge_distiller.py 

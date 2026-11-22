@@ -1,53 +1,50 @@
 # memgate
 
-OpenClaw 治理插件（v0.1.0）：三层记忆（热/温/冷）＋治理工具面。业务逻辑单一来源在
-Python 单源（随包进 `src/vendor/`），TS 层只做调用面。
+The OpenClaw governance plugin (v0.1.0): three-tier memory (hot/warm/cold) + governance tool surface. All business logic lives in the single Python source (shipped in `src/vendor/`); the TS layer is call surface only.
 
-## 装法
+## Install
 
-| 形态 | 命令 | 适用 |
+| Form | Command | Fits |
 |---|---|---|
-| ClawHub 商店 | `openclaw plugins install memgate` | 公开直装（推荐） |
-| 本地制品 | `openclaw plugins install ./memgate-2026.11.19.tgz` | 同机/离线分发 |
-| workspace 链装 | `plugins.load.paths` 指本目录 | 开发态 |
+| ClawHub store | `openclaw plugins install memgate` | public direct install (recommended) |
+| local artifact | `openclaw plugins install ./memgate-2026.11.19.tgz` | same-machine / offline distribution |
+| workspace link | `plugins.load.paths` points at this directory | development |
 
-## 接口面
+## Surface
 
-- 记忆：memory 插槽（账本摘要）＋ contextEngine 插槽（三层记忆摄取/提交）
-- 工具：preflight / ledger / constraints / depscan（调用面）
-- 三形态：CLI / `--oneshot` / `--serve`，同一 `run()` 派发，行为唯一
+- memory: memory slot (ledger digest) + contextEngine slot (three-tier memory ingest/commit)
+- tools: preflight / ledger / constraints / depscan (call surface)
+- three forms: CLI / `--oneshot` / `--serve`, dispatched by the same `run()`, one behavior
 
-## 配置
+## Configuration
 
-- 数据家：`MEMSTEWARD_HOME`（默认 `~/.memsteward/`），记忆全落本地，无云同步
-- LLM 连接预设：`config/llm_connection.env.example` 复制改名 `.env`（云 API 或本地 localhost）
-- 插槽：安装后 `openclaw.json` 自动接 slots（memory/contextEngine=memgate）
+- data home: `MEMSTEWARD_HOME` (default `~/.memsteward/`), all memory stays local, no cloud sync
+- LLM connection preset: copy `config/llm_connection.env.example` to `.env` (cloud API or local localhost)
+- slots: after install, `openclaw.json` wires the slots automatically (memory/contextEngine=memgate)
 
-## 版本绑定
+## Version binding
 
-`VERSIONS.json` 绑定 plugin/sdk/桥协议/嵌入模型指纹/配置槽位；核对
-`python3 src/bridge_cli.py version`（bound/mismatches）。
+`VERSIONS.json` binds plugin/sdk/bridge protocol/embedding model fingerprint/config slots; verify with `python3 src/bridge_cli.py version` (bound/mismatches).
 
-## 安装（2 分钟，零折腾）
+## Install (2 minutes, zero fuss)
 
     openclaw plugins install memgate
 
-- 买家零构建：随包带编译产物与 vendor，无 pip install、无编译步骤
-- 卸载：`openclaw plugins remove memgate`（数据保留）／手动删 `MEMSTEWARD_HOME`（数据删除）
+- zero-build for buyers: compiled artifacts and vendor ship with the package; no pip install, no compile step
+- uninstall: `openclaw plugins remove memgate` (data kept) / delete `MEMSTEWARD_HOME` manually (data deleted)
 
-## 兼容性
+## Compatibility
 
-- OpenClaw pluginApi ≥ 2026.9.4；桥协议 BRIDGE_PROTOCOL=3（见 `VERSIONS.json`）
-- 本插件工具不需要模型路由（deposit/recall/ledger 全离线），与模型预检解耦
-- 旧版 OpenClaw（2026.11 之前）若报 "could not verify a usable inference route"
-  （旧版 SecretRef 密钥解析缺陷，2026.11.3 已修）：升级 OpenClaw 即可
+- OpenClaw pluginApi >= 2026.9.4; bridge protocol BRIDGE_PROTOCOL=3 (see `VERSIONS.json`)
+- the plugin tools need no model routing (deposit/recall/ledger are fully offline), decoupled from model preflight
+- older OpenClaw (before 2026.11) reporting "could not verify a usable inference route" (old SecretRef key-resolution bug, fixed 2026.11.3): upgrade OpenClaw
 
-## 安全模型
+## Security model
 
-- 数据全落本地：记忆/账本/备份都在 `MEMSTEWARD_HOME`，无云同步、无遥测回传
-- 写入有门：所有写入过质量门（写入分级/守望查表/登记门），单写者协议防并发污染
-- 契约先行：越界写入停收待复核，标记需登记确认——宁可少记，不记错的
+- all data local: memory/ledgers/backups live under `MEMSTEWARD_HOME`; no cloud sync, no telemetry upload
+- gated writes: every write passes the quality gate (write grading / watchdog table / registration gate); single-writer protocol prevents concurrent pollution
+- contract first: out-of-contract writes stop and wait for review, flags need registration confirmation — better to remember less than to remember wrong
 
 ---
 
-大本营（源码/文档/issue）：https://github.com/lipin007/memsteward
+Home base (source / docs / issues): https://github.com/lipin007/memsteward

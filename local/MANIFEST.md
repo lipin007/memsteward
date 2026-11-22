@@ -1,24 +1,25 @@
-# MANIFEST — C-完全的本地版 物料清单（2026-11-19 组合审查修正）
+# MANIFEST — Local Edition (C) parts list (revised 2026-11-19 after composition review)
 
-> 版本: v2026.11.19
+> Version: v2026.11.19
 
-## 组合清单（实 import 证据）
+## Composition list (actual import evidence)
 
-| # | 件 | 用途 |
+| # | Part | Purpose |
 |---|---|---|
-| 1/2/3/5 | tokenizer/quality_gate/distiller/tiered_decay | 记忆链 |
-| 7/8 | landing_store/summarizer | 落盘/摘要（kernel calldecacy） |
-| 10/11 | mechanism_learn/planner | 假设生命周期+规划（C 树平铺影子） |
-| 12 | m3 | m3_judge（kernel） |
-| 20 | calldecacy-sdk | 记忆引擎整包 |
-| 21/22 | admission/semantic_recall | 准入+语义臂 |
-| 23 | core-kit | hebbian/events/concept_space（真源 core.hebbian 非 hebbian_link） |
+| 1/2/3/5 | tokenizer/quality_gate/distiller/tiered_decay | memory chain |
+| 7/8 | landing_store/summarizer | persistence / summarization (kernel calldecacy) |
+| 10/11 | mechanism_learn/planner | hypothesis lifecycle + planning (C-tree flattened shadow) |
+| 12 | m3 | m3_judge (kernel) |
+| 20 | calldecacy-sdk | memory engine package |
+| 21/22 | admission/semantic_recall | admission + semantic arm |
+| 23 | core-kit | hebbian/events/concept_space (true source core.hebbian, not hebbian_link) |
 
-> 组合审查修正：移除 #4 hebbian_link（C 用 core.hebbian 非此件）与 #6 memory_core（C 实不 import），原报虚。
+> Composition review corrections: removed #4 hebbian_link (C uses core.hebbian, not this part) and #6 memory_core (C does not import it) — originally over-reported.
 
-## 产品本体
+## Product body
 
-memsteward_local.py / observed_env.py / sdk/memsteward（pip）
+memsteward_local.py / observed_env.py / sdk/memsteward (pip)
 
-## 变更流
-同 A
+## Change workflow
+
+same as A

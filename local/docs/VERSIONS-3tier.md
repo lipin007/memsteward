@@ -1,85 +1,85 @@
-# MemSteward 三版架构（2026-11-17 ARC-AGI 实测后拍板）
+# MemSteward three-edition architecture (decided 2026-11-17 after ARC-AGI field testing)
 
-> 来源：今天 ARC-AGI-3 实测发现三种场景需求完全不同
-> 版本号格式：YYYY.MM.DD，三线独立递增
+> Origin: ARC-AGI-3 field testing that day showed the three scenario classes have completely different needs
+> Version format: YYYY.MM.DD, three lines increment independently
 
 ---
 
-## 版本对照表
+## Edition comparison
 
-| | A. 插件版 | B. 完整版 | C. 本地版 |
+| | A. Plugin | B. Complete | C. Local |
 |---|---|---|---|
-| **形态** | OpenClaw 插件 | daemon + Python 库 | 纯进程内 Python 库 |
-| **通信** | 插件 API | HTTP (127.0.0.1:8877) | 直接函数调用 |
-| **延迟** | ~0ms | ~1ms/调用 | **~0ms** |
-| **部署** | `plugins.load.paths` | systemd + pip | `import memsteward` |
-| **依赖** | OpenClaw 运行时 | Python + HTTP 服务 | **仅 Python 标准库** |
-| **多 agent** | ✅（共享 OpenClaw 会话） | ✅（HTTP 并发） | ❌（单进程） |
-| **跨语言** | ❌（TypeScript） | ✅（HTTP） | ❌（Python） |
-| **适用场景** | OpenClaw 用户 | 服务端 / 多 agent | **具身智能 / 自动驾驶 / 游戏开发** |
-| **代表案例** | OpenClaw 代理 | MemGate 产品 | **机器人控制器 / 游戏 NPC / 自动驾驶决策** |
+| **Shape** | OpenClaw plugin | daemon + Python library | pure in-process Python library |
+| **Communication** | plugin API | HTTP (127.0.0.1:8877) | direct function calls |
+| **Latency** | ~0ms | ~1ms/call | **~0ms** |
+| **Deployment** | `plugins.load.paths` | systemd + pip | `import memsteward` |
+| **Dependencies** | OpenClaw runtime | Python + HTTP service | **Python stdlib only** |
+| **Multi-agent** | yes (shared OpenClaw session) | yes (HTTP concurrency) | no (single process) |
+| **Cross-language** | no (TypeScript) | yes (HTTP) | no (Python) |
+| **Fits** | OpenClaw users | servers / multi-agent | **embodied AI / autonomous driving / game dev** |
+| **Examples** | OpenClaw agents | MemGate product | **robot controllers / game NPCs / driving decisions** |
 
 ---
 
-## C. 本地版（完全单场景本地版）
+## C. Local edition (fully single-scenario local)
 
-### 定位
-**实时低延迟场景的经验外挂**——具身智能、自动驾驶、游戏开发。
-任何毫秒级决策链路，agent 需要在运行中学习并记住经验，但不能承受网络延迟。
+### Positioning
+**An experience plug-in for real-time, low-latency scenarios** — embodied AI, autonomous driving, game development.
+Any millisecond decision loop where the agent must learn and remember on the fly but cannot afford network latency.
 
-### 核心场景
-| 场景 | 延迟要求 | 为什么需要本地版 |
+### Core scenarios
+| Scenario | Latency budget | Why the local edition |
 |---|---|---|
-| **具身智能**（机器人控制） | <1ms | 传感器→决策→执行，每步都要记忆 |
-| **自动驾驶** | <5ms | 实时路况学习，不能等网络 |
-| **游戏开发**（NPC/玩家行为） | <2ms | 每帧决策，NPC 需要跨局学习 |
-| 竞赛/研究 | 宽松 | 无外部服务依赖 |
+| **Embodied AI** (robot control) | <1ms | sense -> decide -> act, every step needs memory |
+| **Autonomous driving** | <5ms | learn live road conditions, no time for the network |
+| **Game dev** (NPC / player behavior) | <2ms | per-frame decisions, NPCs learn across matches |
+| Competitions / research | relaxed | no external service dependencies |
 
-### 包含
-- `memsteward_local.py` — 进程内三入层记忆（零 HTTP）
-- `mechanism_learner.py` — 假设生命周期（形成→确认→推翻）
-- `mechanism_advisor.py` — 失败识别 + 目标引导
-- `observed_env.py` — 零侵入观察包装器
+### Included
+- `memsteward_local.py` — in-process memory (zero HTTP)
+- `mechanism_learner.py` — hypothesis lifecycle (form -> confirm -> overturn)
+- `mechanism_advisor.py` — failure recognition + goal guidance
+- `observed_env.py` — zero-intrusion observation wrapper
 
-### 不包含
-- memt-daemon（不需要服务）
-- model_router（单场景不需要路由）
-- HTTP 通信层（无网络调用）
-- OpenClaw 插件接口
+### Not included
+- memt-daemon (no service needed)
+- model_router (single scenario needs no routing)
+- HTTP layer (no network calls)
+- OpenClaw plugin interface
 
-### 用法
+### Usage
 ```python
 from memsteward_local import MemSteward
 from observed_env import make_observed_env
 
-ms = MemSteward()  # 进程内，零延迟
+ms = MemSteward()  # in-process, zero latency
 env = make_observed_env(env, mem=ag.mem, memsteward=ms)
-# 跑 episode，学到的东西自动存进 ms
-# 下次跑，ms 里的知识还在
+# run the episode; whatever is learned persists into ms
+# next run, the knowledge in ms is still there
 ```
 
-### 验收标准
-1. 同一 agent 带/不带 memsteward → C(k) / 决策质量对比
-2. 多局间记忆持久化 → 跨局/跨任务学习
-3. 假设确认/推翻 → 不重复犯错
-4. **延迟 < 1ms / 次调用**（进程内函数调用）
+### Acceptance criteria
+1. same agent with/without memsteward -> C(k) / decision-quality comparison
+2. memory persists across matches -> cross-match / cross-task learning
+3. hypothesis confirm/overturn -> no repeated mistakes
+4. **latency < 1ms per call** (in-process function call)
 
 ---
 
-## 版本关系
+## Edition relationships
 
 ```
-C. 本地版（核心引擎）
-  ├── 打包成 B. 完整版（+ daemon + HTTP）
-  └── 打包成 A. 插件版（+ OpenClaw 接口）
+C. Local edition (core engine)
+  ├── packaged as B. Complete edition (+ daemon + HTTP)
+  └── packaged as A. Plugin edition (+ OpenClaw interface)
 ```
 
-**本地版是核心引擎**——完整版和插件版都是它的包装。今天 ARC-AGI 测试用的就是本地版的雏形。
+**The local edition is the core engine** — the complete and plugin editions are wrappers around it. The ARC-AGI test used an early form of the local edition.
 
 ---
 
-## 变更历史
+## Change history
 
-| 日期 | A.插件版 | B.完整版 | C.本地版 | 关键变更 |
+| Date | A. Plugin | B. Complete | C. Local | Key change |
 |---|---|---|---|---|
-| 2026-11-17 | 2026.11.17 | 2026.11.17 | 2026.11.17 | 三版架构拍板；ARC-AGI 实测 |
+| 2026-11-17 | 2026.11.17 | 2026.11.17 | 2026.11.17 | three-edition architecture decided; ARC-AGI field tests |
