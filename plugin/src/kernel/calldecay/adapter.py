@@ -6,7 +6,7 @@
     d = cd.decide(obj="兔", goal="丰", current="兔", actions=["喂食", "放牧"])
     cd.learn(obj="兔", act=d["act"], actual="丰", cur="兔")
 
-机制本体在 core/（AI Research Source License v1.2）；本文件只是编排层：
+机制本体在 core/（Elastic License 2.0）；本文件只是编排层：
 known（查表直连，0 上游调用）→ llm（窄接口咨询）→ explore（回退）。
 """
 

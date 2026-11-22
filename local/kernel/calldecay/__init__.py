@@ -6,8 +6,7 @@
     cd = CallDecay()
     d = cd.decide(obj="兔", goal="丰", current="兔", actions=["喂食", "放牧"])
 
-许可：本包编排层 Apache-2.0；core/ 内核 AI Research Source License v1.2
-（非商用免费、商用需事先书面同意）。详见包内 LICENSE 与仓库 PATENTS.md。
+许可：全件 Elastic License 2.0 (SPDX: Elastic-2.0)。详见包内 LICENSE。
 """
 
 __version__ = "0.1.0"
