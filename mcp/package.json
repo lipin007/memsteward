@@ -1,0 +1,39 @@
+{
+  "name": "memgate-mcp",
+  "version": "2026.11.21",
+  "description": "MemGate MCP server (D-MCP edition): governance-grade memory (deposit/recall/stats/compact) for any MCP host - Claude Code, Cursor, Copilot Studio, Windsurf, Cline, Zed. Zero third-party dependencies.",
+  "type": "commonjs",
+  "license": "Elastic-2.0",
+  "bin": {
+    "memgate-mcp": "bin/memgate-mcp.js"
+  },
+  "files": [
+    "mcp_server.py",
+    "kernel/",
+    "test/",
+    "config/",
+    "bin/",
+    "VERSIONS.json",
+    "README.md",
+    "MANIFEST.md",
+    "说明书.md",
+    "历史脉络.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "python": ">=3.9",
+    "node": ">=16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lipin007/memsteward.git"
+  },
+  "homepage": "https://github.com/lipin007/memsteward",
+  "keywords": [
+    "mcp",
+    "memory",
+    "governance",
+    "model-context-protocol",
+    "memgate"
+  ]
+}

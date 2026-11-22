@@ -8,3 +8,5 @@
   全件 AI Research Source License v1.3。
 
 - **2026-11-22**: 许可切换为 **Elastic License 2.0** (SPDX: Elastic-2.0), 全件统一; 旧口径 (AI Research Source License 系) 退役。
+
+- **2026-11-22**: 新增 **MCP 版** (mcp/, npm 包 memgate-mcp@2026.11.21): 一套 MCP 面接入任意宿主 (Claude Code/Cursor/Copilot 等); 许可同日切换 Elastic License 2.0。

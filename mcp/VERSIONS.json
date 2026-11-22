@@ -1,0 +1,9 @@
+{
+  "product": "memgate-mcp",
+  "edition": "D-MCP版",
+  "version": "2026.11.21",
+  "kernel_source": "../B-完整版/src/kernel (sync_kernel.sh 单源链)",
+  "protocol": "MCP 2025-06-18 (stdio, 零依赖手搓实现)",
+  "tools": ["memgate_deposit", "memgate_recall", "memgate_stats", "memgate_compact"],
+  "compat": { "python": ">=3.9", "third_party_deps": 0 }
+}
