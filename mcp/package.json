@@ -16,8 +16,8 @@
     "VERSIONS.json",
     "README.md",
     "MANIFEST.md",
-    "说明书.md",
-    "历史脉络.md",
+    "MANUAL.md",
+    "HISTORY.md",
     "LICENSE"
   ],
   "engines": {
