@@ -28,6 +28,8 @@ Everything under Elastic License 2.0 (SPDX: Elastic-2.0): free for internal and 
 
 ## Documentation
 
+- [FEATURES.md](FEATURES.md) — the detailed feature guide (memory core, quality pipeline, governance tools, SDK, performance)
+
 - [plugin/MANUAL.md](plugin/MANUAL.md) — product manual (promise list + verification contract)
 - [plugin/HISTORY.md](plugin/HISTORY.md) — version history
 - [local/CAPABILITY_INDEX.md](local/CAPABILITY_INDEX.md) — capability index
