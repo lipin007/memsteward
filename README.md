@@ -1,4 +1,5 @@
 # MemSteward — LLM Memory Middleware Family
+[![MCP server](https://glama.ai/mcp/servers/lipin007/memsteward/badges/score.svg)](https://glama.ai/mcp/servers/lipin007/memsteward)
 
 Give any LLM agent memory it can keep and manage: three-tier memory (hot/warm/cold), a write-quality gate, decay, signature-gated recall, and a governance tool surface.
 
